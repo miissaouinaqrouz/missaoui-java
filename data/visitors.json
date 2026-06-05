@@ -75,5 +75,12 @@
     "fullName": "xx xx",
     "registeredAt": "2026-06-05T18:23:08.421Z",
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+  },
+  {
+    "firstName": "Nada",
+    "lastName": "Lhanfouri",
+    "fullName": "Nada Lhanfouri",
+    "registeredAt": "2026-06-05T18:24:08.480Z",
+    "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.5 Mobile/15E148 Safari/604.1"
   }
 ]
