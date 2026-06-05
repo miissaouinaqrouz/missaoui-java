@@ -353,16 +353,16 @@ function RegistrationGate({ onRegistered }: { onRegistered: (visitor: Visitor) =
       if (response.ok) {
         setStatus('saved')
         setMessage('Enregistré dans GitHub.')
+        onRegistered(nextVisitor)
       } else {
-        setStatus('offline')
-        setMessage('Enregistré sur ce navigateur. Le push GitHub sera actif après déploiement serveur.')
+        const result = await response.json().catch(() => null)
+        setStatus('error')
+        setMessage(result?.error ?? 'Enregistrement GitHub impossible. Vérifiez la configuration serveur.')
       }
     } catch {
-      setStatus('offline')
-      setMessage('Enregistré sur ce navigateur. Le push GitHub sera actif après déploiement serveur.')
+      setStatus('error')
+      setMessage('Enregistrement GitHub impossible. Vérifiez la connexion ou la configuration serveur.')
     }
-
-    onRegistered(nextVisitor)
   }
 
   return (
