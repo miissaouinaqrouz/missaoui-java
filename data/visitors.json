@@ -110,5 +110,12 @@
     "fullName": "admin admin",
     "registeredAt": "2026-06-05T19:58:44.295Z",
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0"
+  },
+  {
+    "firstName": "test",
+    "lastName": "test",
+    "fullName": "test test",
+    "registeredAt": "2026-06-05T20:43:25.932Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:151.0) Gecko/20100101 Firefox/151.0"
   }
 ]
