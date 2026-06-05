@@ -29,7 +29,7 @@ import {
   type QuizQuestion,
 } from './courseData'
 
-type View = 'dashboard' | 'modules' | 'flashcards' | 'exam' | 'professor-exams'
+type View = 'dashboard' | 'modules' | 'flashcards' | 'exam' | 'professor-exams' | 'twenty'
 type AnswerMap = Record<string, number>
 type MultiAnswerMap = Record<string, number[]>
 type Visitor = {
@@ -186,6 +186,10 @@ function App() {
             <FileText size={18} />
             Examens prof
           </button>
+          <button className={view === 'twenty' ? 'active' : ''} onClick={() => navigate('twenty')}>
+            <Trophy size={18} />
+            Objectif 20/20
+          </button>
         </nav>
 
         <div className="moduleNav">
@@ -311,6 +315,8 @@ function App() {
               }}
             />
           )}
+
+          {view === 'twenty' && <TwentyTwentyView onNavigate={navigate} />}
         </main>
       </div>
     </div>
@@ -447,6 +453,10 @@ function Dashboard({
             <button className="ghostButton" onClick={() => onNavigate('exam')}>
               <ClipboardList size={18} />
               Examen blanc
+            </button>
+            <button className="ghostButton" onClick={() => onNavigate('twenty')}>
+              <Trophy size={18} />
+              Objectif 20/20
             </button>
           </div>
         </div>
@@ -790,6 +800,163 @@ function ProfessorExamsView({
   )
 }
 
+function TwentyTwentyView({ onNavigate }: { onNavigate: (view: View) => void }) {
+  const priorities = [
+    {
+      title: 'Spring Core',
+      score: '4-5 pts',
+      items: [
+        'IoC, DI, ApplicationContext, bean, couplage fort/faible.',
+        'XML: constructor-arg, property, factory-method, valeurs scalaires.',
+        '@Component, @Service, @Repository, @Autowired, @Qualifier, @Configuration.',
+      ],
+    },
+    {
+      title: 'JDBC & Transactions',
+      score: '4-5 pts',
+      items: [
+        'JdbcTemplate dépend d’une DataSource et applique le pattern Template.',
+        'RowMapper transforme ResultSet vers objet Java.',
+        '@Transactional: rollback RuntimeException, readOnly, timeout, propagation REQUIRED.',
+      ],
+    },
+    {
+      title: 'REST & Spring Boot',
+      score: '5-6 pts',
+      items: [
+        'URLs en ressources: /api/v1/students/{id}, pas /createStudent.',
+        'GET/POST/PUT/PATCH/DELETE + codes 200, 201, 204, 400, 401, 403, 404.',
+        '@RestController, @RequestBody, @PathVariable, @RequestParam, @Valid, ResponseEntity.',
+      ],
+    },
+    {
+      title: 'JPA/Hibernate',
+      score: '3-4 pts',
+      items: [
+        '@Entity, @Id, @GeneratedValue, @Column, @OneToMany, @ManyToOne.',
+        'JPA est une spécification; Hibernate est une implémentation.',
+        'LAZY par défaut, éviter N+1 avec JOIN FETCH ou @EntityGraph.',
+      ],
+    },
+  ]
+
+  const method = [
+    'QCM: lire toutes les propositions; plusieurs réponses peuvent être correctes.',
+    'Si la question dit “RESTful”, vérifier verbe + URL + body + code HTTP.',
+    'Si la question parle Spring, séparer déclaration de bean, injection, cycle de vie et persistance.',
+    'Pour un exercice de conception, dépendre d’une interface, injecter par constructeur et annoter les couches.',
+    'Ne jamais répondre “200 OK” pour une erreur métier ou validation: penser 400/404/401/403.',
+  ]
+
+  const finalChecklist = [
+    'Je sais expliquer IoC, DI, bean et ApplicationContext en 3 lignes.',
+    'Je connais constructor-arg vs property et injection obligatoire/facultative.',
+    'Je sais résoudre une ambiguïté de beans avec @Qualifier ou @Primary.',
+    'Je sais écrire un contrôleur REST complet avec ResponseEntity.',
+    'Je sais remplir un tableau REST: URL, méthode, body requête, code retour, body réponse.',
+    'Je sais corriger un service couplé à une implémentation concrète.',
+    'Je sais différencier JDBC, Spring JDBC, JPA, Hibernate et Spring Data JPA.',
+    'Je connais les pièges: HQL utilise les entités, @Column mappe une propriété, @RequestParam lit ?x=.',
+  ]
+
+  const schedule = [
+    { time: 'J-3', task: 'Refaire les deux examens prof sans regarder les corrections.' },
+    { time: 'J-2', task: 'Revoir les modules REST, Spring JDBC, annotations et transactions.' },
+    { time: 'J-1', task: 'Flashcards + pièges + tableaux REST. Pas de nouveau chapitre lourd.' },
+    { time: 'Jour J', task: 'Commencer par les questions sûres, puis revenir aux choix multiples difficiles.' },
+  ]
+
+  return (
+    <section className="twentyPage">
+      <div className="twentyHero">
+        <div>
+          <p className="eyebrow">Plan intensif</p>
+          <h2>Objectif 20/20</h2>
+          <p>
+            Concentre-toi sur ce qui tombe vraiment: QCM du prof, REST, Spring Core, JDBC,
+            transactions et conception par interfaces. Cette page sert de tableau de bord final.
+          </p>
+          <div className="actionRow">
+            <button className="primaryButton" onClick={() => onNavigate('professor-exams')}>
+              <FileText size={18} />
+              Refaire examens prof
+            </button>
+            <button className="ghostButton" onClick={() => onNavigate('flashcards')}>
+              <Layers3 size={18} />
+              Réviser flashcards
+            </button>
+          </div>
+        </div>
+        <div className="twentyScore">
+          <Trophy size={34} />
+          <strong>20/20</strong>
+          <span>viser juste, pas tout relire</span>
+        </div>
+      </div>
+
+      <div className="twentyGrid">
+        {priorities.map((priority) => (
+          <article key={priority.title} className="priorityCard">
+            <div className="priorityTop">
+              <strong>{priority.title}</strong>
+              <span>{priority.score}</span>
+            </div>
+            <ul>
+              {priority.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div className="twentyColumns">
+        <section className="twentyPanel">
+          <div className="sectionTitle">
+            <Target size={18} />
+            <h3>Méthode pour gagner les points</h3>
+          </div>
+          <ol>
+            {method.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="twentyPanel">
+          <div className="sectionTitle">
+            <ClipboardList size={18} />
+            <h3>Planning court</h3>
+          </div>
+          <div className="scheduleList">
+            {schedule.map((item) => (
+              <div key={item.time}>
+                <strong>{item.time}</strong>
+                <span>{item.task}</span>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
+
+      <section className="twentyPanel">
+        <div className="sectionTitle">
+          <CheckCircle2 size={18} />
+          <h3>Checklist avant de dormir</h3>
+        </div>
+        <div className="checklistGrid">
+          {finalChecklist.map((item) => (
+            <label key={item}>
+              <input type="checkbox" />
+              <span>{item}</span>
+            </label>
+          ))}
+        </div>
+      </section>
+    </section>
+  )
+}
+
 function MultiQuestionCard({
   index,
   question,
@@ -957,6 +1124,7 @@ function pageTitle(view: View, activeModule: string) {
   if (view === 'modules') return activeModule
   if (view === 'flashcards') return 'Flashcards'
   if (view === 'professor-exams') return 'Examens prof'
+  if (view === 'twenty') return 'Objectif 20/20'
   return 'Examen blanc'
 }
 
