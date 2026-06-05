@@ -124,5 +124,12 @@
     "fullName": "Aymane Boutrik",
     "registeredAt": "2026-06-05T21:21:52.651Z",
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36"
+  },
+  {
+    "firstName": "Hakim",
+    "lastName": "Ziyech",
+    "fullName": "Hakim Ziyech",
+    "registeredAt": "2026-06-05T21:25:46.268Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 OPR/131.0.0.0"
   }
 ]
