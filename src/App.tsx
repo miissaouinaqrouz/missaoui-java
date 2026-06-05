@@ -366,29 +366,35 @@ function RegistrationGate({ onRegistered }: { onRegistered: (visitor: Visitor) =
         <p>Entrez votre nom et prénom avant d’accéder à la plateforme de révision.</p>
 
         <form onSubmit={submit} className="registrationForm">
-          <label>
-            Prénom
-            <input
-              value={firstName}
-              onChange={(event) => setFirstName(event.target.value)}
-              autoComplete="given-name"
-              placeholder="Ex: Ayoub"
-              maxLength={40}
-            />
+          <label className="fieldGroup">
+            <span>Prénom</span>
+            <div className="inputShell">
+              <UserRound size={18} />
+              <input
+                value={firstName}
+                onChange={(event) => setFirstName(event.target.value)}
+                autoComplete="given-name"
+                placeholder="Ayoub"
+                maxLength={40}
+              />
+            </div>
           </label>
-          <label>
-            Nom
-            <input
-              value={lastName}
-              onChange={(event) => setLastName(event.target.value)}
-              autoComplete="family-name"
-              placeholder="Ex: Missaoui"
-              maxLength={40}
-            />
+          <label className="fieldGroup">
+            <span>Nom</span>
+            <div className="inputShell">
+              <UserRound size={18} />
+              <input
+                value={lastName}
+                onChange={(event) => setLastName(event.target.value)}
+                autoComplete="family-name"
+                placeholder="Missaoui"
+                maxLength={40}
+              />
+            </div>
           </label>
           <button className="primaryButton" disabled={status === 'saving'}>
             <CheckCircle2 size={18} />
-            Entrer
+            Entrer dans la plateforme
           </button>
         </form>
 
