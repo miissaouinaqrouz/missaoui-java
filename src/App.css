@@ -1,0 +1,1010 @@
+.appShell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 292px minmax(0, 1fr);
+  background: #f6f7f4;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: 22px 18px;
+  color: #e9f2ee;
+  background:
+    linear-gradient(180deg, rgba(4, 47, 46, 0.94), rgba(15, 23, 42, 0.98)),
+    radial-gradient(circle at 22% 0%, rgba(20, 184, 166, 0.32), transparent 28%);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  z-index: 20;
+}
+
+.brandBlock {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.brandMark {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  color: #062c2a;
+  background: #b7f7df;
+}
+
+.brandBlock h1 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.1;
+  color: #ffffff;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.sidebar .eyebrow {
+  color: #9be8d9;
+}
+
+.navBlock,
+.moduleNav {
+  display: grid;
+  gap: 7px;
+}
+
+.navBlock button,
+.moduleNav button {
+  width: 100%;
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #dbeafe;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navBlock button:hover,
+.navBlock button.active,
+.moduleNav button:hover,
+.moduleNav button.activeModule {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.13);
+}
+
+.moduleNav {
+  padding-top: 4px;
+}
+
+.moduleNav button {
+  min-height: 36px;
+  font-size: 14px;
+}
+
+.moduleNav button small {
+  margin-left: auto;
+  min-width: 24px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  border-radius: 999px;
+  color: #a7f3d0;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.moduleDot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+}
+
+.progressPanel {
+  margin-top: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.progressPanel div:first-child {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.meter {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.meter span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #5eead4;
+}
+
+.mainShell {
+  min-width: 0;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 28px;
+  background: rgba(246, 247, 244, 0.92);
+  border-bottom: 1px solid #e3e7de;
+  backdrop-filter: blur(12px);
+}
+
+.topbar h2 {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.15;
+  color: #172033;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid #d6ddd2;
+  border-radius: 8px;
+  color: #1f2937;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.mobileOnly,
+.backdrop,
+.closeMenu {
+  display: none;
+}
+
+main {
+  padding: 26px;
+}
+
+.dashboard,
+.learningLayout,
+.examPanel {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.overviewBand {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.7fr);
+  gap: 24px;
+  min-height: 330px;
+  padding: 30px;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  color: #172033;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(233, 250, 245, 0.92)),
+    linear-gradient(90deg, #f8fafc, #eff6ff);
+}
+
+.overviewCopy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 720px;
+}
+
+.overviewCopy h2 {
+  margin: 0 0 14px;
+  max-width: 760px;
+  font-size: 44px;
+  line-height: 1.02;
+  color: #111827;
+}
+
+.overviewCopy p {
+  max-width: 760px;
+  margin: 0;
+  color: #475569;
+}
+
+.actionRow,
+.examActions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.primaryButton,
+.ghostButton,
+.doneButton,
+.miniButton {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.primaryButton {
+  color: #ffffff;
+  background: #0f766e;
+  border: 1px solid #0f766e;
+}
+
+.ghostButton,
+.doneButton,
+.miniButton {
+  color: #1f2937;
+  background: #ffffff;
+  border: 1px solid #d6ddd2;
+}
+
+.doneButton.isDone,
+.miniButton:hover,
+.miniButton:focus-visible {
+  color: #065f46;
+  background: #dcfce7;
+  border-color: #86efac;
+}
+
+.architectureMap {
+  min-height: 260px;
+  display: grid;
+  align-content: center;
+  gap: 12px;
+  padding: 18px;
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, #0f172a, #17313c),
+    #0f172a;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.mapNode {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 900;
+}
+
+.mapNode.core {
+  color: #042f2e;
+  background: #99f6e4;
+}
+
+.mapNode.data {
+  color: #172554;
+  background: #bfdbfe;
+}
+
+.mapNode.api {
+  color: #7f1d1d;
+  background: #fecaca;
+}
+
+.mapLine {
+  width: 2px;
+  height: 24px;
+  margin: 0 auto;
+  background: #94a3b8;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.metricCard {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.metricCard > span {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  color: #0f766e;
+  background: #ccfbf1;
+}
+
+.metricCard strong {
+  display: block;
+  font-size: 26px;
+  color: #111827;
+}
+
+.metricCard p {
+  margin: 2px 0 0;
+  color: #64748b;
+}
+
+.moduleGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.moduleCard {
+  position: relative;
+  min-height: 188px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  overflow: hidden;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  color: #475569;
+  background: #ffffff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.moduleCard:hover {
+  border-color: #95a3b8;
+  transform: translateY(-1px);
+}
+
+.moduleAccent {
+  width: 34px;
+  height: 5px;
+  border-radius: 999px;
+}
+
+.moduleMeta {
+  font-size: 12px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.moduleCard strong {
+  font-size: 20px;
+  line-height: 1.15;
+  color: #111827;
+}
+
+.learningLayout {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 18px;
+}
+
+.professorLayout {
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 18px;
+  margin: 0 auto;
+}
+
+.professorTabs {
+  position: sticky;
+  top: 96px;
+  height: fit-content;
+  display: grid;
+  gap: 10px;
+}
+
+.professorTabs button {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  color: #334155;
+  background: #ffffff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.professorTabs button.selected {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.14);
+}
+
+.professorTabs button > svg {
+  color: #0f766e;
+}
+
+.professorTabs button span {
+  display: grid;
+  gap: 3px;
+}
+
+.professorTabs small {
+  color: #64748b;
+}
+
+.moduleRail {
+  position: sticky;
+  top: 96px;
+  height: fit-content;
+  display: grid;
+  gap: 8px;
+}
+
+.moduleRail button {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.moduleRail button.selected {
+  border-color: #0f766e;
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.14);
+}
+
+.moduleRail button span {
+  width: 8px;
+  height: 28px;
+  flex: 0 0 auto;
+  border-radius: 999px;
+}
+
+.moduleRail button svg {
+  margin-left: auto;
+  color: #16a34a;
+}
+
+.lessonPanel,
+.examPanel {
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.lessonHeader,
+.examHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px;
+  border-bottom: 1px solid #e6ebe2;
+}
+
+.lessonHeader h2,
+.examHeader h2 {
+  margin: 0 0 10px;
+  font-size: 30px;
+  line-height: 1.1;
+  color: #111827;
+}
+
+.lessonHeader p,
+.examHeader p {
+  margin: 0;
+  color: #475569;
+}
+
+.lessonSections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.lessonSections section,
+.quizBlock,
+.questionCard {
+  border: 1px solid #e2e8dc;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.lessonSections section {
+  padding: 17px;
+}
+
+.lessonSections h3,
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  color: #172033;
+}
+
+.lessonSections h3 {
+  font-size: 17px;
+}
+
+.lessonSections ul {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding-left: 19px;
+  color: #475569;
+}
+
+.codePanel,
+.pitfallPanel,
+.presentationInfo {
+  grid-column: 1 / -1;
+}
+
+.presentationInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.presentationInfoGrid article {
+  padding: 14px;
+  border: 1px solid #d9e4d2;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.presentationInfoGrid strong {
+  display: block;
+  margin-bottom: 9px;
+  color: #0f3f3b;
+}
+
+.presentationInfoGrid ul {
+  font-size: 14px;
+}
+
+pre {
+  margin: 0;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: #111827;
+}
+
+pre code {
+  display: block;
+  min-width: 100%;
+  padding: 16px;
+  color: #e5e7eb;
+  font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.quizBlock {
+  display: grid;
+  gap: 14px;
+  margin: 0 24px 24px;
+  padding: 18px;
+}
+
+.sectionTitle h3 {
+  margin: 0;
+}
+
+.questionStack {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.openExerciseGrid {
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+  border-bottom: 1px solid #e6ebe2;
+}
+
+.openExercise {
+  padding: 18px;
+  border: 1px solid #e2e8dc;
+  border-radius: 8px;
+  background: #fbfcfa;
+}
+
+.openExercise h3 {
+  margin: 0 0 8px;
+  color: #111827;
+}
+
+.openExercise p {
+  margin: 0 0 12px;
+  color: #475569;
+}
+
+.expectedBlock {
+  margin-top: 12px;
+  padding: 13px 14px;
+  border-radius: 8px;
+  color: #134e4a;
+  background: #ecfdf5;
+}
+
+.expectedBlock strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.expectedBlock ul {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.professorMcqHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 18px 0;
+}
+
+.professorMcqHeader p {
+  max-width: 520px;
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.questionCard {
+  padding: 16px;
+}
+
+.questionText {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #111827;
+}
+
+.questionText span {
+  width: 26px;
+  height: 26px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  color: #0f766e;
+  background: #ccfbf1;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.optionGrid button {
+  min-height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 11px;
+  border: 1px solid #d6ddd2;
+  border-radius: 8px;
+  color: #334155;
+  background: #ffffff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.checkBox {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  flex: 0 0 auto;
+  border: 2px solid #94a3b8;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.checkBox.checked {
+  border-color: #2563eb;
+  background: linear-gradient(135deg, #2563eb 0 48%, #ffffff 49% 58%, #2563eb 59%);
+}
+
+.optionGrid button.selected {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.optionGrid button.correct {
+  border-color: #22c55e;
+  background: #dcfce7;
+  color: #14532d;
+}
+
+.optionGrid button.wrong {
+  border-color: #ef4444;
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+.explanation {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #475569;
+  background: #f1f5f9;
+}
+
+.flashcardGrid {
+  max-width: 1240px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 0 auto;
+}
+
+.flashcard {
+  min-height: 230px;
+  display: grid;
+  grid-template-rows: auto minmax(100px, 1fr) auto;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #dfe5d8;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.flashcard.mastered {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.flashcardTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-weight: 800;
+}
+
+.flashcardTop span {
+  width: 28px;
+  height: 5px;
+  border-radius: 999px;
+}
+
+.flashContent {
+  width: 100%;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border: 1px dashed #cbd5c5;
+  border-radius: 8px;
+  color: #111827;
+  background: #fbfcfa;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.flashcard.revealed .flashContent {
+  color: #0f3f3b;
+  background: #ecfdf5;
+}
+
+.scoreBadge {
+  min-width: 110px;
+  height: 88px;
+  display: grid;
+  place-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  color: #0f3f3b;
+  background: #ccfbf1;
+}
+
+.scoreBadge strong {
+  font-size: 28px;
+}
+
+.scoreBadge span {
+  font-weight: 800;
+}
+
+.examActions {
+  padding: 0 18px 20px;
+  margin-top: 0;
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.32);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .appShell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: 0;
+    transform: translateX(-100%);
+    width: min(88vw, 318px);
+    transition: transform 0.2s ease;
+  }
+
+  .sidebar.isOpen {
+    transform: translateX(0);
+  }
+
+  .mobileOnly {
+    display: inline-grid;
+  }
+
+  .backdrop.show {
+    position: fixed;
+    inset: 0;
+    display: block;
+    z-index: 15;
+    border: 0;
+    background: rgba(15, 23, 42, 0.42);
+  }
+
+  .closeMenu.show {
+    position: fixed;
+    top: 14px;
+    left: min(calc(88vw - 54px), 264px);
+    z-index: 25;
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #ffffff;
+    background: rgba(15, 23, 42, 0.72);
+  }
+
+  .overviewBand,
+  .learningLayout,
+  .professorLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .moduleRail,
+  .professorTabs {
+    position: static;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .topbar {
+    padding: 12px 14px;
+  }
+
+  .topbar h2 {
+    font-size: 20px;
+  }
+
+  main {
+    padding: 14px;
+  }
+
+  .overviewBand {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .overviewCopy h2 {
+    font-size: 32px;
+  }
+
+  .statsGrid,
+  .moduleGrid,
+  .lessonSections,
+  .presentationInfoGrid,
+  .flashcardGrid,
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .moduleRail,
+  .professorTabs {
+    grid-template-columns: 1fr;
+  }
+
+  .lessonHeader,
+  .examHeader {
+    flex-direction: column;
+    padding: 18px;
+  }
+
+  .lessonSections {
+    padding: 14px;
+  }
+
+  .quizBlock {
+    margin: 0 14px 14px;
+  }
+
+  .questionStack {
+    padding: 14px;
+  }
+
+  .openExerciseGrid {
+    padding: 14px;
+  }
+
+  .professorMcqHeader {
+    flex-direction: column;
+  }
+
+  .actionRow,
+  .examActions {
+    flex-direction: column;
+  }
+
+  .primaryButton,
+  .ghostButton,
+  .doneButton,
+  .miniButton {
+    width: 100%;
+  }
+}
