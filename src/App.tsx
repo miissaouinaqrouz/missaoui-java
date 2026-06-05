@@ -374,7 +374,6 @@ function RegistrationGate({ onRegistered }: { onRegistered: (visitor: Visitor) =
                 value={firstName}
                 onChange={(event) => setFirstName(event.target.value)}
                 autoComplete="given-name"
-                placeholder="Ayoub"
                 maxLength={40}
               />
             </div>
@@ -387,7 +386,6 @@ function RegistrationGate({ onRegistered }: { onRegistered: (visitor: Visitor) =
                 value={lastName}
                 onChange={(event) => setLastName(event.target.value)}
                 autoComplete="family-name"
-                placeholder="Missaoui"
                 maxLength={40}
               />
             </div>
