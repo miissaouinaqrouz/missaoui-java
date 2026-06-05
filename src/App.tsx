@@ -147,6 +147,11 @@ function App() {
     storeList(storage.mastered, [])
   }
 
+  function changeVisitor() {
+    window.localStorage.removeItem(storage.visitor)
+    setVisitor(null)
+  }
+
   return (
     <div className="appShell">
       <aside className={`sidebar ${sidebarOpen ? 'isOpen' : ''}`}>
@@ -220,9 +225,14 @@ function App() {
             </p>
             <h2>{pageTitle(view, activeModule.shortTitle)}</h2>
           </div>
-          <button className="iconButton" onClick={resetProgress} aria-label="Réinitialiser la progression">
-            <RotateCcw size={19} />
-          </button>
+          <div className="topbarActions">
+            <button className="iconButton" onClick={changeVisitor} aria-label="Changer le nom">
+              <UserRound size={19} />
+            </button>
+            <button className="iconButton" onClick={resetProgress} aria-label="Réinitialiser la progression">
+              <RotateCcw size={19} />
+            </button>
+          </div>
         </header>
 
         <button className={`backdrop ${sidebarOpen ? 'show' : ''}`} onClick={() => setSidebarOpen(false)} aria-label="Fermer" />
