@@ -14,9 +14,10 @@ import {
   SearchCheck,
   Target,
   Trophy,
+  UserRound,
   X,
 } from 'lucide-react'
-import { useMemo, useState } from 'react'
+import { useMemo, useState, type FormEvent } from 'react'
 import './App.css'
 import {
   allFlashcards,
@@ -31,10 +32,16 @@ import {
 type View = 'dashboard' | 'modules' | 'flashcards' | 'exam' | 'professor-exams'
 type AnswerMap = Record<string, number>
 type MultiAnswerMap = Record<string, number[]>
+type Visitor = {
+  firstName: string
+  lastName: string
+  registeredAt?: string
+}
 
 const storage = {
   completed: 'spring-platform-completed-modules',
   mastered: 'spring-platform-mastered-cards',
+  visitor: 'spring-platform-visitor',
 }
 
 function readStoredList(key: string) {
@@ -50,7 +57,19 @@ function storeList(key: string, value: string[]) {
   window.localStorage.setItem(key, JSON.stringify(value))
 }
 
+function readStoredVisitor(): Visitor | null {
+  try {
+    const raw = window.localStorage.getItem(storage.visitor)
+    if (!raw) return null
+    const visitor = JSON.parse(raw) as Visitor
+    return visitor.firstName && visitor.lastName ? visitor : null
+  } catch {
+    return null
+  }
+}
+
 function App() {
+  const [visitor, setVisitor] = useState<Visitor | null>(() => readStoredVisitor())
   const [view, setView] = useState<View>('dashboard')
   const [activeModuleId, setActiveModuleId] = useState(modules[0].id)
   const [completedModules, setCompletedModules] = useState(() => readStoredList(storage.completed))
@@ -74,6 +93,17 @@ function App() {
     () => getMultiScore(activeProfessorExam.mcq, professorAnswers),
     [activeProfessorExam.mcq, professorAnswers],
   )
+
+  if (!visitor) {
+    return (
+      <RegistrationGate
+        onRegistered={(nextVisitor) => {
+          window.localStorage.setItem(storage.visitor, JSON.stringify(nextVisitor))
+          setVisitor(nextVisitor)
+        }}
+      />
+    )
+  }
 
   function navigate(nextView: View) {
     setView(nextView)
@@ -185,7 +215,9 @@ function App() {
             <Menu size={20} />
           </button>
           <div>
-            <p className="eyebrow">Module Spring, JPA, Hibernate et REST</p>
+            <p className="eyebrow">
+              {visitor.firstName} {visitor.lastName} · Module Spring, JPA, Hibernate et REST
+            </p>
             <h2>{pageTitle(view, activeModule.shortTitle)}</h2>
           </div>
           <button className="iconButton" onClick={resetProgress} aria-label="Réinitialiser la progression">
@@ -273,6 +305,101 @@ function App() {
       </div>
     </div>
   )
+}
+
+function RegistrationGate({ onRegistered }: { onRegistered: (visitor: Visitor) => void }) {
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [status, setStatus] = useState<'idle' | 'saving' | 'saved' | 'offline' | 'error'>('idle')
+  const [message, setMessage] = useState('')
+
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const cleanFirstName = cleanName(firstName)
+    const cleanLastName = cleanName(lastName)
+
+    if (!cleanFirstName || !cleanLastName) {
+      setStatus('error')
+      setMessage('Nom et prénom sont obligatoires.')
+      return
+    }
+
+    const nextVisitor = {
+      firstName: cleanFirstName,
+      lastName: cleanLastName,
+      registeredAt: new Date().toISOString(),
+    }
+
+    setStatus('saving')
+    setMessage('Enregistrement en cours...')
+
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nextVisitor),
+      })
+
+      if (response.ok) {
+        setStatus('saved')
+        setMessage('Enregistré dans GitHub.')
+      } else {
+        setStatus('offline')
+        setMessage('Enregistré sur ce navigateur. Le push GitHub sera actif après déploiement serveur.')
+      }
+    } catch {
+      setStatus('offline')
+      setMessage('Enregistré sur ce navigateur. Le push GitHub sera actif après déploiement serveur.')
+    }
+
+    onRegistered(nextVisitor)
+  }
+
+  return (
+    <main className="registrationPage">
+      <section className="registrationPanel">
+        <div className="registrationIcon">
+          <UserRound size={30} />
+        </div>
+        <p className="eyebrow">Accès obligatoire</p>
+        <h1>Identifiez-vous</h1>
+        <p>Entrez votre nom et prénom avant d’accéder à la plateforme de révision.</p>
+
+        <form onSubmit={submit} className="registrationForm">
+          <label>
+            Prénom
+            <input
+              value={firstName}
+              onChange={(event) => setFirstName(event.target.value)}
+              autoComplete="given-name"
+              placeholder="Ex: Ayoub"
+              maxLength={40}
+            />
+          </label>
+          <label>
+            Nom
+            <input
+              value={lastName}
+              onChange={(event) => setLastName(event.target.value)}
+              autoComplete="family-name"
+              placeholder="Ex: Missaoui"
+              maxLength={40}
+            />
+          </label>
+          <button className="primaryButton" disabled={status === 'saving'}>
+            <CheckCircle2 size={18} />
+            Entrer
+          </button>
+        </form>
+
+        {message && <p className={`registrationMessage ${status}`}>{message}</p>}
+      </section>
+    </main>
+  )
+}
+
+function cleanName(value: string) {
+  return value.replace(/\s+/g, ' ').trim().slice(0, 40)
 }
 
 function Dashboard({
