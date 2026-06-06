@@ -173,5 +173,12 @@
     "fullName": "gta san andreas",
     "registeredAt": "2026-06-06T01:06:28.692Z",
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 OPR/131.0.0.0"
+  },
+  {
+    "firstName": "donald",
+    "lastName": "trump",
+    "fullName": "donald trump",
+    "registeredAt": "2026-06-06T01:06:44.226Z",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36 OPR/131.0.0.0"
   }
 ]
